@@ -3,7 +3,10 @@ const request = require('request');
 const config = require('config');
 const router = express.Router();
 const auth = require('../../middleware/auth');
-const { check, validationResult } = require('express-validator');
+const {
+  check,
+  validationResult
+} = require('express-validator');
 
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
@@ -91,17 +94,13 @@ router.post(
 
       //Update
       if (profile) {
-        profile = await Profile.findOneAndUpdate(
-          {
-            user: req.user.id,
-          },
-          {
-            $set: profileFields,
-          },
-          {
-            new: true,
-          }
-        );
+        profile = await Profile.findOneAndUpdate({
+          user: req.user.id,
+        }, {
+          $set: profileFields,
+        }, {
+          new: true,
+        });
         return res.json(profile);
       }
 
@@ -201,7 +200,15 @@ router.put(
       });
     }
 
-    const { title, company, location, from, to, current, description } = req.body;
+    const {
+      title,
+      company,
+      location,
+      from,
+      to,
+      current,
+      description
+    } = req.body;
 
     const newExp = {
       title,
@@ -266,11 +273,19 @@ router.put(
 
     if (!errors.isEmpty()) {
       return res.status(400).json({
-        errors: errors.array(),
+        errors: errors.array()
       });
     }
 
-    const { school, degree, fieldofstudy, from, to, current, description } = req.body;
+    const {
+      school,
+      degree,
+      fieldofstudy,
+      from,
+      to,
+      current,
+      description
+    } = req.body;
 
     const newEduc = {
       school,
@@ -337,7 +352,9 @@ router.get('/github/:username', (req, res) => {
       if (error) console.log(error);
 
       if (response.statusCode !== 200) {
-        return res.status(400).json({ msg: 'No Github profile found' });
+        return res.status(400).json({
+          msg: 'No Github profile found'
+        });
       }
 
       res.json(JSON.parse(body));

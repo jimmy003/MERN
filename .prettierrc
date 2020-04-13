@@ -1,5 +1,11 @@
 {
   "editor.formatOnSave": true,
   "singleQuote": true,
-  "printWidth": 120
+  "printWidth": 120,
+  "extends": "react-app",
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": "error"
+  },
+  "trailingComma": "es5"
 }
