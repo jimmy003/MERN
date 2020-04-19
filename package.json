@@ -1,7 +1,10 @@
 {
-	"name": "code",
-	"version": "1.0.0",
-	"description": "Social Network for developers",
+	"name": "bakasyunan-heroku",
+	"version": "1.0.1",
+	"description": "staycation alternative",
+	"engines": {
+		"node": "12.16.x"
+	},
 	"main": "server.js",
 	"scripts": {
 		"start": "node server",
