@@ -4,15 +4,23 @@ heroku login
 
 heroku create
 
+
+
 //Add to github
 git status
 git add .
 
+
 //commit to local repository
 git commit -m 'Prepared for deployment'
 
+
 //add heroku as remote repository 
 heroku git:remote -a gentle-plains-13749
+
+//Check your buildpack
+heroku buildpacks:set heroku/nodejs
+
 
 //Run deployment
 git push heroku master
@@ -21,6 +29,8 @@ git push heroku master
 - compression
 - run build script
 - completed 
+
+
 
 //on command line 
 heroku open 
@@ -59,3 +69,5 @@ Admin@DESKTOP-QTR0TL8 MINGW64 /d/Jimmy/Projects/Bakasyunan/code (master)
 $ heroku create
 Creating app... done, ⬢ afternoon-tundra-49816
 https://afternoon-tundra-49816.herokuapp.com/ | https://git.heroku.com/afternoon-tundra-49816.git   
+
+heroku git:remote -a afternoon-tundra-49816
