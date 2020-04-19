@@ -5,6 +5,7 @@ import {
 	GET_PROFILE,
 	GET_PROFILES,
 	PROFILE_ERROR,
+	BASE_URL,
 	UPDATE_PROFILE,
 	ACCOUNT_DELETED,
 	GET_REPOS,
@@ -13,7 +14,12 @@ import {
 
 export const getCurrentProfile = () => async (dispatch) => {
 	try {
-		const res = await axios.get('/api/profile/me');
+		const config = {
+			baseURL: BASE_URL,
+			withCredentials: false,
+		};
+
+		const res = await axios.get('/api/profile/me', config);
 
 		dispatch({
 			type: GET_PROFILE,
@@ -34,7 +40,12 @@ export const getProfiles = () => async (dispatch) => {
 	});
 
 	try {
-		const res = await axios.get('/api/profile');
+		const config = {
+			baseURL: BASE_URL,
+			withCredentials: false,
+		};
+
+		const res = await axios.get('/api/profile', config);
 
 		dispatch({
 			type: GET_PROFILES,
@@ -51,7 +62,12 @@ export const getProfiles = () => async (dispatch) => {
 //Get Profile by ID
 export const getProfileById = (userId) => async (dispatch) => {
 	try {
-		const res = await axios.get(`/api/profile/user/${userId}`);
+		const config = {
+			baseURL: BASE_URL,
+			withCredentials: false,
+		};
+
+		const res = await axios.get(`/api/profile/user/${userId}`, config);
 
 		dispatch({
 			type: GET_PROFILE,
@@ -67,7 +83,12 @@ export const getProfileById = (userId) => async (dispatch) => {
 //Get Github repos
 export const getGithubRepos = (username) => async (dispatch) => {
 	try {
-		const res = await axios.get(`/api/profile/github/${username}`);
+		const config = {
+			baseURL: BASE_URL,
+			withCredentials: false,
+		};
+
+		const res = await axios.get(`/api/profile/github/${username}`, config);
 
 		dispatch({
 			type: GET_REPOS,
@@ -85,9 +106,11 @@ export const createProfile = (formData, history, edit = false) => async (dispatc
 	try {
 		const config = {
 			headers: { 'Content-Type': 'application/json' },
+			baseURL: BASE_URL,
+			withCredentials: false,
 		};
 
-		const res = await axios.post('/api/profile', formData);
+		const res = await axios.post('/api/profile', formData, config);
 
 		dispatch({
 			type: GET_PROFILE,
@@ -117,6 +140,7 @@ export const addExperience = (formData, history) => async (dispatch) => {
 	try {
 		const config = {
 			headers: { 'Content-Type': 'application/json' },
+			baseURL: BASE_URL,
 		};
 
 		const res = await axios.put('/api/profile/experience', formData, config);
@@ -146,6 +170,7 @@ export const addEducation = (formData, history) => async (dispatch) => {
 	try {
 		const config = {
 			headers: { 'Content-Type': 'application/json' },
+			baseURL: BASE_URL,
 		};
 
 		const res = await axios.put('/api/profile/education', formData, config);
@@ -175,6 +200,7 @@ export const deleteExperience = (id) => async (dispatch) => {
 	try {
 		const config = {
 			headers: { 'Content-Type': 'application/json' },
+			baseURL: BASE_URL,
 		};
 
 		const res = await axios.delete(`/api/profile/experience/${id}`, config);
@@ -198,6 +224,7 @@ export const deleteEducation = (id) => async (dispatch) => {
 	try {
 		const config = {
 			headers: { 'Content-Type': 'application/json' },
+			baseURL: BASE_URL,
 		};
 
 		const res = await axios.delete(`/api/profile/education/${id}`, config);
@@ -222,6 +249,7 @@ export const deleteAccount = (id) => async (dispatch) => {
 		try {
 			const config = {
 				headers: { 'Content-Type': 'application/json' },
+				baseURL: BASE_URL,
 			};
 
 			await axios.delete('/api/profile', config);

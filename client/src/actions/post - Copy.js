@@ -4,6 +4,7 @@ import {
 	GET_POSTS,
 	POST_ERROR,
 	UPDATE_LIKES,
+	BASE_URL,
 	DELETE_POST,
 	ADD_POST,
 	GET_POST,
@@ -14,7 +15,12 @@ import {
 //Get posts
 export const getPosts = () => async (dispatch) => {
 	try {
-		const res = await axios.get('/api/posts');
+		const config = {
+			baseURL: BASE_URL,
+			withCredentials: false,
+		};
+
+		const res = await axios.get('/api/posts', config);
 
 		dispatch({
 			type: GET_POSTS,
@@ -31,7 +37,12 @@ export const getPosts = () => async (dispatch) => {
 //Add like
 export const addLike = (id) => async (dispatch) => {
 	try {
-		const res = await axios.put(`/api/posts/like/${id}`);
+		const config = {
+			baseURL: BASE_URL,
+			withCredentials: false,
+		};
+
+		const res = await axios.put(`/api/posts/like/${id}`, null, config);
 
 		dispatch({
 			type: UPDATE_LIKES,
@@ -48,7 +59,12 @@ export const addLike = (id) => async (dispatch) => {
 //Remove like
 export const removeLike = (id) => async (dispatch) => {
 	try {
-		const res = await axios.put(`/api/posts/unlike/${id}`);
+		const config = {
+			baseURL: BASE_URL,
+			withCredentials: false,
+		};
+
+		const res = await axios.put(`/api/posts/unlike/${id}`, null, config);
 
 		dispatch({
 			type: UPDATE_LIKES,
@@ -65,7 +81,12 @@ export const removeLike = (id) => async (dispatch) => {
 //Delete post
 export const deletePost = (id) => async (dispatch) => {
 	try {
-		await axios.delete(`/api/posts/${id}`);
+		const config = {
+			baseURL: BASE_URL,
+			withCredentials: false,
+		};
+
+		await axios.delete(`/api/posts/${id}`, config);
 
 		dispatch({
 			type: DELETE_POST,
@@ -85,6 +106,8 @@ export const deletePost = (id) => async (dispatch) => {
 export const addPost = (formData) => async (dispatch) => {
 	const config = {
 		headers: { 'Content-Type': 'application/json' },
+		baseURL: BASE_URL,
+		withCredentials: false,
 	};
 
 	try {
@@ -107,7 +130,12 @@ export const addPost = (formData) => async (dispatch) => {
 //Get post
 export const getPost = (id) => async (dispatch) => {
 	try {
-		const res = await axios.get(`/api/posts/${id}`);
+		const config = {
+			baseURL: BASE_URL,
+			withCredentials: false,
+		};
+
+		const res = await axios.get(`/api/posts/${id}`, config);
 
 		dispatch({
 			type: GET_POST,
@@ -125,6 +153,8 @@ export const getPost = (id) => async (dispatch) => {
 export const addComment = (postId, formData) => async (dispatch) => {
 	const config = {
 		headers: { 'Content-Type': 'application/json' },
+		baseURL: BASE_URL,
+		withCredentials: false,
 	};
 
 	try {
@@ -146,8 +176,13 @@ export const addComment = (postId, formData) => async (dispatch) => {
 
 //Delete comment
 export const deleteComment = (postId, commentId) => async (dispatch) => {
+	const config = {
+		baseURL: BASE_URL,
+		withCredentials: false,
+	};
+
 	try {
-		await axios.delete(`/api/posts/comment/${postId}/${commentId}`;
+		await axios.delete(`/api/posts/comment/${postId}/${commentId}`, config);
 
 		dispatch({
 			type: DELETE_COMMENT,

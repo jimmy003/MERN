@@ -1,0 +1,61 @@
+heroku login
+
+//browser will open to login
+
+heroku create
+
+//Add to github
+git status
+git add .
+
+//commit to local repository
+git commit -m 'Prepared for deployment'
+
+//add heroku as remote repository 
+heroku git:remote -a gentle-plains-13749
+
+//Run deployment
+git push heroku master
+
+***** processing here
+- compression
+- run build script
+- completed 
+
+//on command line 
+heroku open 
+
+//browser
+https://gentle-plains-13749.herokuapp.com/
+
+
+
+
+Creating app... done, ⬢ gentle-plains-13749
+https://gentle-plains-13749.herokuapp.com/ | https://git.heroku.com/gentle-plains-13749.git
+
+heroku git:remote -a gentle-plains-13749
+
+remote: -----> Build succeeded!
+remote: -----> Discovering process types
+remote:        Procfile declares types     -> (none)
+remote:        Default types for buildpack -> web
+remote:
+remote: -----> Compressing...
+remote:        Done: 104.8M
+remote: -----> Launching...
+remote:        Released v3
+remote:        https://gentle-plains-13749.herokuapp.com/ deployed to Heroku
+remote:
+remote: Verifying deploy... done.
+To https://git.heroku.com/gentle-plains-13749.git
+ * [new branch]      master -> master
+
+
+
+///2nd try 
+
+Admin@DESKTOP-QTR0TL8 MINGW64 /d/Jimmy/Projects/Bakasyunan/code (master)
+$ heroku create
+Creating app... done, ⬢ afternoon-tundra-49816
+https://afternoon-tundra-49816.herokuapp.com/ | https://git.heroku.com/afternoon-tundra-49816.git   

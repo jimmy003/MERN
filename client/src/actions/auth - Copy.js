@@ -9,6 +9,7 @@ import {
 	LOGIN_FAIL,
 	LOGOUT,
 	CLEAR_PROFILE,
+	BASE_URL,
 } from './types';
 import setAuthToken from '../utils/setAuthToken';
 
@@ -19,7 +20,12 @@ export const loadUser = () => async (dispatch) => {
 	}
 
 	try {
-		const res = await axios.get('/api/auth');
+		const config = {
+			baseURL: BASE_URL,
+			withCredentials: false,
+		};
+
+		const res = await axios.get('/api/auth', config);
 
 		dispatch({
 			type: USER_LOADED,
@@ -36,6 +42,8 @@ export const loadUser = () => async (dispatch) => {
 export const register = ({ name, email, password }) => async (dispatch) => {
 	const config = {
 		headers: { 'Content-Type': 'application/json' },
+		baseURL: BASE_URL,
+		withCredentials: false,
 	};
 
 	const body = JSON.stringify({ name, email, password });
@@ -65,6 +73,8 @@ export const register = ({ name, email, password }) => async (dispatch) => {
 export const login = (email, password) => async (dispatch) => {
 	const config = {
 		headers: { 'Content-Type': 'application/json' },
+		baseURL: BASE_URL,
+		withCredentials: false,
 	};
 
 	const body = JSON.stringify({ email, password });
